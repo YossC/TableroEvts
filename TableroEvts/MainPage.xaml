@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TableroEvts.MainPage">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="30,0" Spacing="25">
+            <Label x:Name="MessageLabel"
+                   Text="Bienvenido a la aplicación de eventos"
+                   HorizontalOptions="Center"
+                   FontSize="Large" />
+
+            <Button x:Name="HoverButton"
+                    Text="Pasa el mouse por aquí"
+                    BackgroundColor="LightGray"
+                    WidthRequest="200"
+                    Focused="OnMouseEntered"    
+                    Unfocused="OnMouseExited">
+                <Button.GestureRecognizers>
+                    <TapGestureRecognizer NumberOfTapsRequired="2" />
+                    <SwipeGestureRecognizer Direction="Left" />
+                </Button.GestureRecognizers>
+            </Button>
+
+            <Button x:Name="ClickButton"
+                    Text="Haz clic aquí"
+                    Clicked="OnClickButtonClicked"
+                    WidthRequest="200" />
+
+            <Entry x:Name="InputTextBox"
+                   Placeholder="Escribe algo aquí"
+                   WidthRequest="200"
+                   TextChanged="OnTextChanged" />
+
+            <Label x:Name="CharCountLabel"
+                   Text="0 caracteres escritos"
+                   HorizontalOptions="Center" />
+
+            <Entry x:Name="FocusTextBox"
+                   Placeholder="Este cuadro tiene eventos de foco"
+                   WidthRequest="200"
+                   Focused="OnFocusTextBoxFocused"
+                   Unfocused="OnFocusTextBoxUnfocused" />
+
+            <Button Text="Resetear Tablero"
+                    Clicked="OnResetButtonClicked"
+                    BackgroundColor="Red"
+                    TextColor="White"
+                    WidthRequest="200" />
+
+            <Label x:Name="TimerLabel"
+                   Text="El temporizador no ha iniciado"
+                   HorizontalOptions="Center" />
+
+            <Slider x:Name="TextSizeSlider"
+                    Minimum="10" Maximum="30"
+                    ValueChanged="OnSliderValueChanged" />
+
+            <Label Text="Ajusta el tamaño del texto con el slider"
+                   HorizontalOptions="Center" />
+
+            
+
+            <!-- Cuadro arrastrable -->
+            <BoxView x:Name="DraggableBox"
+                     Color="Pink"
+                     WidthRequest="100"
+                     HeightRequest="100"
+                     HorizontalOptions="Start"
+                     VerticalOptions="Start">
+                <BoxView.GestureRecognizers>
+                    <PanGestureRecognizer PanUpdated="OnPanUpdated" />
+                </BoxView.GestureRecognizers>
+            </BoxView>
+
+            <Label x:Name="EventLog"
+                Text="Log de eventos:"
+                HorizontalOptions="Start" />
+
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
